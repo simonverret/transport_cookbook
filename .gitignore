@@ -6,4 +6,6 @@ cookbook.out
 cookbook.pdf
 cookbook.synctex.gz
 cookbook.toc
+cookbook.blg
+cookbook.bbl
 cookbookNotes.bib

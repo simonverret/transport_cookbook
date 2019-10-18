@@ -114,7 +114,7 @@ The various functions seen in the brackets of~\eqref{sigma},~\eqref{alpha},~\eqr
 = 
 -\frac{T}{\epsilon}
 \frac{\partial f(\epsilon)}{\partial T} = 
-\frac{1}{4\cosh^{2}(\epsilon/k_BT)}.
+\frac{1}{4k_BT\cosh^{2}(\epsilon/2k_BT)}.
 \end{align}
 Such functions are non-zero only in a narrow window surrounding the Fermi level (at $\epsilon=0$ in our convention). This is why we often only care about the Fermi surface when studying transport. 
 We can displace the Fermi energy by considering $\epsilon = E_{\vec k}-\mu$, where the chemical potential~$\mu$ controls the expected number of particles $n$ filling the band $E_{\vec k}$ (with hole doping $p=1-n$).
@@ -400,17 +400,21 @@ The semiclassical movement equation \eqref{semiClassicalMovement} must be used t
 
 
 \subsection{Equi-energy surfaces}\label{sec_surfaces}
-The Dirac delta $\delta(\epsilon-E(\vec k))$ allow to change the three-dimensional $\vec k$ integral to a two-dimensional surface integral, on the surface defined by $E(\vec k)=\epsilon$ (see equation~8.57 and 8.62 of Ashcroft~\&~Mermin~\cite{ashcroft_solid_1976} for a similar statement). Take an arbitrary function $F(\vec k)$, for example:
+The Dirac delta $\delta(\epsilon-E(\vec k))$ allow to change the three-dimensional $\vec k$ integral to a two-dimensional surface integral, on the surface defined by $E(\vec k)=\epsilon$ (see equation~8.57 and 8.62 of Ashcroft~\&~Mermin~\cite{ashcroft_solid_1976} for a similar statement). To do so, the integral is re-expressed using:
+\begin{align}
+\epsilon + d\epsilon = \epsilon + |\nabla_{\vec k}E(\vec k)|dk_{\perp}
+\end{align}
+For example, with an arbitrary function $F(\vec k)$:
 \begin{align}
 \iiint d^3 k 
 F(\vec k)\delta\big(\epsilon - E(\vec k)\big)
 &=
-\iint\limits_{E(\vec k)=\text{cst.}} d^2k_{\parallel}
+\iint\limits_{E(\vec k)=\epsilon} d^2k_{\parallel}
 \int dk_{\perp}
 F(\vec k)\delta\big(\epsilon - E(\vec k)\big)
 \\
 &=
-\iint\limits_{E(\vec k)=\text{cst.}} d^2k_{\parallel} 
+\iint\limits_{E(\vec k)=\epsilon} d^2k_{\parallel} 
 \int \frac{dE(\vec k)}{|\nabla_{\vec k}E(\vec k)|}
 F(\vec k)\delta\big(\epsilon - E(\vec k)\big)
 \\
@@ -771,7 +775,7 @@ In this expression, small numerical values might be needed to prevent divergence
 % \end{acknowledgments}
 
 
-\bibliography{amro}
+\bibliography{cookbook}
 
 \end{document}
 
