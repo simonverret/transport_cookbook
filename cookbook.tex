@@ -749,22 +749,23 @@ The various lifetime $\tau_{\vec k}$ we consider are those of previous work on H
 \end{align}
 and the scattering rate can have various contributions:
 \begin{align}
-\Gamma(\vec k) 
+\Gamma(\vec k,\omega,T) 
 &=\eta_0
++ \eta_{1}\omega
 + \eta_{\ell}|\vec v(\vec k)|
 + \eta_{N}/|\vec v(\vec k)|
 \nonumber\\&
 \phantom{=\ }
-+ \eta_{\text{FLa}}(\omega^2 + \pi^2T^2)
 + \eta_{\text{PL}}T
++ \eta_{\text{FL}_a}(\omega^2 + \pi^2T^2)
+% \nonumber\\&
+% \phantom{=\ }
++ \eta_{\text{FL}_b}(\omega^2 + \pi^2T^2)/|\vec v(\vec k)|
 \nonumber\\&
 \phantom{=\ }
-+ \eta_{\text{FLb}}(\omega^2 + \pi^2T^2)/|\vec v(\vec k)|
-\nonumber\\&
-\phantom{=\ }
-+ \eta_{\text{an}}\big(\cos k_x - \cos k_y\big)^2.
++ (\eta_{\text{an}} + \eta_{\text{an}1}\omega)\big(\cos k_x - \cos k_y\big)^{12}
 \end{align}
-In this expression, small numerical values might be needed to prevent divergence. Respectively taken alone, $\eta_0$ would yield constant lifetime, $\eta_\ell$ would yield constant mean-free path, $\eta_N$ would yield scattering proportional to the density of state, and $\eta_{\text{an}}$ yields a phenomenological increase of the anti-nodal scattering. There can be various reasons to consider each terms separately, or combined.
+In this expression, a small non-zero value for $\eta_0$ is usually needed to prevent divergence. Taken alone, $\eta_0$ would yield constant lifetime, $\eta_\ell$ would yield constant mean-free path, $\eta_N$ would yield scattering proportional to the density of state, $\eta_1$ provides a linear dependence in energy (allows to control the sign of $\alpha$ to some extent), $\eta_{\text{FL}_a}$ gives a Fermi-Liquid dependence, $\eta_{\text{FL}_b}$ a Fermi liquid dependence proportional to the density of states and $\eta_{\text{an}}$ yields a phenomenological increase of the anti-nodal scattering and $\eta_{\text{an}1}$ extends the linear energy dependence to this anisotropy. There can be various reasons to consider each terms separately, or combined or to add new terms.
 
 % \section{strongly correlated case}
 
