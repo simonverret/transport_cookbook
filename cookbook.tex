@@ -400,41 +400,48 @@ The semiclassical movement equation \eqref{semiClassicalMovement} must be used t
 
 
 \subsection{Equi-energy surfaces}\label{sec_surfaces}
-The Dirac delta $\delta(\epsilon-E(\vec k))$ allow to change the three-dimensional $\vec k$ integral to a two-dimensional surface integral, on the surface defined by $E(\vec k)=\epsilon$ (see equation~8.57 and 8.62 of Ashcroft~\&~Mermin~\cite{ashcroft_solid_1976} for a similar statement). To do so, the integral is re-expressed using:
-\begin{align}
-\epsilon + d\epsilon = \epsilon + |\nabla_{\vec k}E(\vec k)|dk_{\perp}
-\end{align}
-For example, with an arbitrary function $F(\vec k)$:
+The Dirac delta $\delta(\epsilon-E(\vec k))$ allow to change the three-dimensional $\vec k$ integral to a two-dimensional integral on the surface defined by $E(\vec k)=\epsilon$ (see equation~8.57 and 8.62 of Ashcroft~\&~Mermin~\cite{ashcroft_solid_1976} for a similar statement).
+Indeed, for arbitrary $F(\vec k)$, we can rewrite the integral as:
 \begin{align}
 \iiint d^3 k 
 F(\vec k)\delta\big(\epsilon - E(\vec k)\big)
 &=
-\iint\limits_{E(\vec k)=\epsilon} d^2k_{\parallel}
+\iint d^2k_{\parallel}
 \int dk_{\perp}
+F(\vec k)\delta\big(\epsilon - E(\vec k)\big),
+\end{align}
+where a change of variable was used at each point of space, to the basis where $k_{\perp}$ is the component of $\vec k$ perpendicular to the surface defined by $E(\vec k)=\epsilon$, and $k_{\parallel}$ are the two components parallel to this surface. In this new basis, an infinitesimal change of $\epsilon$ is always along $k_{\perp}$
+\begin{align}
+\epsilon + d\epsilon &= \epsilon + |\nabla_{\vec k}E(\vec k)|dk_{\perp}
+\end{align}
+so the $\delta(\epsilon - E(\vec k))$ allows to remove the integral on $k_{\perp}$: 
+\begin{align}
+\iiint d^3 k 
 F(\vec k)\delta\big(\epsilon - E(\vec k)\big)
-\\
+% &=
+% \iint d^2k_{\parallel} 
+% \int \frac{d\epsilon}{|\nabla_{\vec k}E(\vec k)|}
+% F(\vec k)\delta\big(\epsilon - E(\vec k)\big)
+% \\
 &=
-\iint\limits_{E(\vec k)=\epsilon} d^2k_{\parallel} 
-\int \frac{dE(\vec k)}{|\nabla_{\vec k}E(\vec k)|}
-F(\vec k)\delta\big(\epsilon - E(\vec k)\big)
-\\
-&=
-\iint\limits_{E(\vec k)=\epsilon} d^2k_{\epsilon} 
-\frac{F(\vec k_{\epsilon})}{|\nabla_{\vec k}E(\vec k)|_{\vec k=\vec k_{\epsilon}}}.
+\iint d^2k_{\parallel} 
+\frac{F(\vec k)}{|\nabla_{\vec k}E(\vec k)|}.
 % \intertext{Question: could this be written as}
 % \delta\big(\epsilon-E(\vec k)\big)
 % &=
-% \iint\limits_{E(\vec k)=\epsilon} d^2 k_{\epsilon} \frac{\delta^{3}(\vec k-\vec k_{\epsilon})}{|\vec \nabla_{\vec k} E(\vec k)|_{\vec k=\vec k_{\epsilon}}}\ ?
+% \iint d^2 k \frac{\delta^{3}(\vec k-\vec k)}{|\vec \nabla_{\vec k} E(\vec k)|_{\vec k=\vec k}}\ ?
 \end{align}
-where $\vec k_{\epsilon}$ are the wave vectors belonging to this equi-energy surface $E(\vec k)=\epsilon$. The integral on the Brillouin zone therefore reduces to a surface integral for each value of $\epsilon$, and \eqref{chambers1} becomes:
+Although it seems to have disapear, the dependence in $\epsilon$ still exists implicitely in the bounds of the integral: the $k_{\parallel}$ run along the surface defined by $E(\vec k)=\epsilon$.
+
+The above allow to rewrite \eqref{chambers1} as:
 \begin{align}
 \Aboxed{
 \sigma_{ij}(\epsilon) 
 &=
 e^2
 \iint\limits_{\substack{E(\vec k)=\epsilon\\ \text{in BZ}}}
-\frac{d^2k_{\epsilon}}{(2\pi)^3}
-\frac{v_{i}(\vec k_{\epsilon})\bar{v}_{j}(\vec k_{\epsilon})}{\hbar|\vec v(\vec k_{\epsilon})|}
+\frac{d^2k_{\parallel}}{(2\pi)^3}
+\frac{v_{i}(\vec k)\bar{v}_{j}(\vec k)}{\hbar|\vec v(\vec k)|}
 }.
 \label{chambersSurfaces}
 \end{align}
@@ -606,7 +613,7 @@ f(\epsilon)
 \delta_{ij}M^{-1}_{ii}(\vec k)\tau
 \nonumber\\
 &\qquad
-+\varepsilon_{ijk}(-eB_k) \bigg(M^{-1}_{ii}(\vec k)M^{-1}_{jj}(\vec k) - M^{-2}_{ij}(\vec k) \bigg)\tau^2
++\varepsilon_{ijk}(-eB_k) \bigg(M^{-1}_{ii}(\vec k)M^{-1}_{jj}(\vec k) - \big( M^{-1}_{ij}(\vec k) \big)^2 \bigg)\tau^2
 \Bigg]
 \delta(\epsilon-E(\vec k))
 ,
