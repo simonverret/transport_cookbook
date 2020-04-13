@@ -202,7 +202,7 @@ The thermoelectricity tensor $\boldsymbol{Q}$ is defined as:
   {\sigma_{xx}\sigma_{yy}-\sigma_{xy}\sigma_{yx}}
 \end{pmatrix}
 \end{align}
-Therefore, the Seebeck coefficient corresponds to:
+Therefore, the Seebeck coefficient corresponds to
 \begin{align}
 S_x
 \equiv 
@@ -212,10 +212,38 @@ Q_{xx}
 \approx 
 \boxed{
 \frac{\alpha_{xx}}{\sigma_{xx}}
-}
+}.
 \label{eq_seebeck}
 \end{align}
-And the Nernst coefficient is givent by:
+By substituing~\eqref{sigma} and~\eqref{alpha} and expanding $\sigma_{xx}(\omega)$ as a power series, one can further simplify the above to get the Mott formula
+\begin{align}
+S_x = \frac{\alpha_{xx}}{\sigma_{xx}} 
+&=
+-\frac{1}{eT}
+\frac{
+\int_{-\infty}^{\infty}d\epsilon
+\big(\frac{\partial f(\epsilon)}{\partial \epsilon}\big)\epsilon
+\big[ \sigma_{xx}(0) + \sigma'_{xx}(0)\epsilon + \cdots \big]
+}{
+\int_{-\infty}^{\infty} d\epsilon
+\big(\frac{\partial f(\epsilon)}{\partial \epsilon}\big)
+\big[ \sigma_{xx}(0) + \sigma'_{xx}(0)\epsilon + \cdots \big]
+}
+\\
+& = - \frac{\pi^2 k_B^2 T}{3e}\frac{ \sigma'_{xx}(0)}{ \sigma_{xx}(0)}
+\\
+\Aboxed{
+S_x
+& = - \frac{\pi^2 k_B^2 T}{3e}\frac{\partial \log \sigma_{xx}(\epsilon) }{\partial \epsilon}\Big\vert_{\epsilon=0}
+},
+\end{align}
+where we used $\int_{-\infty}^{\infty}d\epsilon (\frac{\partial f(\epsilon)}{\partial \epsilon})\epsilon = 0$ because the integrand is odd and the important identity 
+\begin{align}
+\Aboxed{
+\int_{-\infty}^{\infty}d\epsilon \Big(\frac{\partial f(\epsilon)}{\partial \epsilon}\Big) = \frac{\pi^2 k_B^2 T^2}{3}
+}.
+\end{align}
+The Nernst coefficient is givent by:
 \begin{align}
 N 
 \equiv
