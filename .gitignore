@@ -3,7 +3,7 @@ cookbook.fdb_latexmk
 cookbook.fls
 cookbook.log
 cookbook.out
-cookbook.pdf
+#cookbook.pdf
 cookbook.synctex.gz
 cookbook.toc
 cookbook.blg
