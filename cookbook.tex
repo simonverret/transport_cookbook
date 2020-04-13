@@ -233,7 +233,7 @@ Q_{xy}
 \subsection{Thermal conductivity \& Righi-Leduc effect}
 In the same way, the thermal conductivity $\boldsymbol{\kappa}$ can be obtained from:
 \begin{align}
-\boldsymbol{\kappa} &\equiv -L_{22} + TL_{12}L_{11}^{-1}L_{12}
+\boldsymbol{\kappa} &\equiv L_{22} - TL_{12}L_{11}^{-1}L_{12}
 \end{align}
 which yields thermal conductivity:
 \begin{align}
@@ -248,16 +248,19 @@ T\Big(\frac{
 \Big) - \beta_{xx}
 \\ &
 \approx
-T\Big( \frac{
+T
+% \Big( 
+\frac{
 \alpha_{xx}^2
 }{\sigma_{xx}}
-+
-\frac{
-\alpha_{xy}\alpha_{yx}
-}{\sigma_{yy}}
-\Big) - \beta_{xx}
+% +
+% \frac{
+% \alpha_{xy}\alpha_{yx}
+% }{\sigma_{yy}}
+% \Big)
+- \beta_{xx}
 \end{align}
-and the Rigi-Leduc (or thermal Hall) coefficient:
+and the Righi-Leduc (or thermal Hall) coefficient:
 \begin{align}
 \kappa_{xy} 
 &=
@@ -302,7 +305,7 @@ Equation~\ref{eq_seebeck_explicit} is particularily relevant to cuprates, regard
 
 The above analysis remains mostly valid in the strongly correlated case. As we we will see in the next section, the non-interacting, zero-field $\sigma_{xx}(\epsilon)$ is:
 \begin{align}
-\sigma_{xx}(\epsilon) = 
+\sigma_{xx}(\epsilon)
 &=
 e^2\iiint_{\text{BZ}}\frac{d^3k}{(2\pi)^3}
 v_{x}(\vec k)^2
@@ -311,7 +314,7 @@ v_{x}(\vec k)^2
 \end{align}
 In the strongly correlated case, $\sigma_{xx}(\epsilon)$ would be the current-current correlation function, given in first approximation by:
 \begin{align}
-\sigma_{xx}(\epsilon) = 
+\sigma_{xx}(\epsilon) 
 &=
 e^2\iiint_{\text{BZ}}\frac{d^3k}{(2\pi)^3}
 v_{x}(\vec k)^2
