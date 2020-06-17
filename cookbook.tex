@@ -62,7 +62,7 @@ This document is a pedagogical reference that summarizes the mathematical relati
 \vspace{-0.5cm}
 \tableofcontents
 
-\section{Conductivity tensors}
+\section{Conductivity tensors}\label{section_tensors}
 \noindent
 Three conductivity tensors $L_{11}$, $L_{12}$, and $L_{22}$ suffice to determine all electronic transport coefficients. They are tensors because they express the relations between $x$,$y$,$z$ components of: the electric current~$\vec j_e$, the heat current~$\vec j_Q$, the electric field~$\vec E$, and the Temperature gradient~$\vec \nabla T$~\cite{ashcroft_solid_1976,arsenault_transport_2013}:
 \begin{align}
@@ -128,7 +128,7 @@ We can displace the Fermi energy by considering $\epsilon = E_{\vec k}-\mu$, whe
 \label{figure_fermi}
 \end{figure}
 
-Furthermore, at low temperature, expressions~\eqref{sigma},~\eqref{alpha},~\eqref{beta} and~\eqref{Cv} can all be approximated using the Sommerfeld expansion (see~\cite{ashcroft_solid_1976}, appendix C):
+Furthermore, at low temperature, expressions~\eqref{sigma},~\eqref{alpha},~\eqref{beta} and~\eqref{Cv} can all be approximated using the Sommerfeld expansion (see Ashcroft~\&~Mermin~\cite{ashcroft_solid_1976}, appendix C):
 \begin{align}
 \int_{-\infty}^{\infty} d\epsilon
 \bigg(-\frac{\partial f(\epsilon)}{\partial \epsilon}\bigg)
@@ -140,12 +140,21 @@ K(0)
 k_{B}^2T^2
 K''(0)
 +
-\frac{7\pi^4}{270}
-k_{B}^2T^4
+\frac{7\pi^4k_{B}^4}{270}
+T^4
 K''''(0)
 + \cdots
+\label{sommerfeld}
 \end{align}
-where primes denote the derivative. One can thus verify the following first order approximations:
+where primes denote derivatives. The above can be obtained by a Taylor expansion of $K(\epsilon)$, the observation that only even terms contribute to the integral, and an evaluation of the coefficients:
+\begin{align}
+\int_{-\infty}^{\infty} d\epsilon 
+\bigg(-\frac{\partial f(\epsilon)}{\partial \epsilon}\bigg)
+\frac{\epsilon^{2n}}{(2n)!}
+&=
+2\bigg( 1-\frac{1}{2^{2n}}+\frac{1}{3^{2n}}-\frac{1}{3^{4n}}+\cdots \bigg) (k_BT)^{2n} 
+\end{align}
+The Sommerfeld expansion~\eqref{sommerfeld} allow to verify the following first order approximations:
 \begin{align}
 \sigma_{ij}
 &\approx
@@ -258,15 +267,13 @@ Q_{xx}
 }.
 \label{eq_seebeck}
 \end{align}
-for which first order Sommerfeld approximations~\eqref{sigma_expanded} and~\eqref{alpha_expanded} lead to the Mott formula:
+for which the low-temperature expansion~\eqref{sigma_expanded} and~\eqref{alpha_expanded} lead to well-known Mott formula:
 \begin{align}
 S_x = \frac{\alpha_{xx}}{\sigma_{xx}} 
 &= - \frac{\pi^2 k_B^2 T}{3e}\frac{ \sigma'_{xx}(0)}{ \sigma_{xx}(0)}
 \\
-\Aboxed{
-S_x
-& = - \frac{\pi^2 k_B^2 T}{3e}\frac{\partial \log \sigma_{xx}(\epsilon) }{\partial \epsilon}\Big\vert_{\epsilon=0}
-},
+& = 
+- \frac{\pi^2 k_B^2 T}{3e}\frac{\partial \log \sigma_{xx}(\epsilon) }{\partial \epsilon}\Big\vert_{\epsilon=0},
 \end{align}
 The Nernst coefficient is givent by:
 \begin{align}
@@ -336,7 +343,7 @@ T\Big( \frac{
 \Big) - \beta_{xy}
 \end{align}
 
-\subsection{Example of interpretation for the Seebeck effect}
+\subsection{Example: interpretating the Seebeck effect}
 When substituting the expressions the resistivity \eqref{eq_resistivity} for $\rho_{xx}$ and \eqref{alpha} for $\alpha_{xx}$ in the reduced expression for the Seebeck coefficient~\eqref{eq_seebeck}, one gets a particularily revealing expression regarding the density of conductivity $\sigma_{xx}(\epsilon)$:
 \begin{align}
 S_x 
@@ -352,40 +359,12 @@ S_x
 \end{align}
 In this expression, we can see that if $\sigma_{xx}(\epsilon)$ is even with respect to the Fermi-level, \emph{i.e.} $\sigma_{xx}(-\epsilon) = \sigma_{xx}(\epsilon)$ within the narrow energy window determined by $-\frac{\partial f(\epsilon)}{\partial \epsilon}$, then, because of the extra $\epsilon$ in the integral, the integrand is perfectly odd and the Seebeck coefficient should be zero. Thus, any non-zero Seebeck effect must come from an assymetry in the density of conductivity $\sigma_{xx}(\epsilon)$ with respect to the Fermi level.
 
-Equation~\ref{eq_seebeck_explicit} is particularily relevant to cuprates, regarding the pseudogap transition occuring at doping~$p^*$. At low temperature, an abrupt augmentation of the resistivity~$\rho_{xx}$ is observed at~$p^*$. Since resistivity explicitely enters expression~\eqref{eq_seebeck_explicit}, an equivalent augmentation is expected in the Seebeck effect, given the latter is non-zero. However, a comparison between the augmentation in $\rho_{xx}$ and the augmentation in $S_x$ might reveal a lot more. Namely, if the $p^*$ transition causes $\sigma_{xx}(\epsilon)$ to change symetrically in energy with respect to the Fermi level, then the only effect in $S_x$ will come from $\rho_{xx}$, because the $\epsilon$ would make the symmetric changes of the transition an odd contribution in the integral of~\eqref{eq_seebeck_explicit}, which would cancel out. In that case, the Seebeck augmentation should track the resistivity augmentation exactly. On the other hand, if the change in $\sigma_{xx}(\epsilon)$ is assymetric with respect to the Fermi level, then there will be a difference between the augmentations in $S_x$ and that in $\rho_{xx}$. Note that in either cases, the Seebeck effect can remain nonzero at all times, given a sufficiently assymetric $\sigma_{xx}(\epsilon)$; only the eveness or oddness of \emph{the changes} brought by the transition are relevant.
+Equation~\eqref{eq_seebeck_explicit} is particularily relevant to cuprates, regarding the pseudogap transition occuring at doping~$p^*$. At low temperature, an abrupt augmentation of the resistivity~$\rho_{xx}$ is observed at~$p^*$~\cite{collignon_fermi-surface_2017}. Since resistivity explicitely enters expression~\eqref{eq_seebeck_explicit}, an equivalent augmentation is expected in the Seebeck effect, given the latter is non-zero. However, a comparison between the augmentation in $\rho_{xx}$ and the augmentation in $S_x$ might reveal a lot more. Namely, if the $p^*$ transition causes $\sigma_{xx}(\epsilon)$ to change symetrically in energy with respect to the Fermi level, then the only effect in $S_x$ will come from $\rho_{xx}$, because the $\epsilon$ would make the symmetric changes of the transition an odd contribution in the integral of~\eqref{eq_seebeck_explicit}, which would cancel out. In that case, the Seebeck augmentation should track the resistivity augmentation exactly. On the other hand, if the change in $\sigma_{xx}(\epsilon)$ is assymetric with respect to the Fermi level, then there will be a difference between the augmentations in $S_x$ and that in $\rho_{xx}$. Note that in either cases, the Seebeck effect can remain nonzero at all times, given a sufficiently assymetric $\sigma_{xx}(\epsilon)$; only the eveness or oddness of \emph{the changes} brought by the transition are relevant.
 
-\subsection{Note on the strongly correlated case}
 
-The above analysis remains mostly valid in the strongly correlated case. As we we will see in the next section, the non-interacting, zero-field $\sigma_{xx}(\epsilon)$ is:
-\begin{align}
-\sigma_{xx}(\epsilon)
-&=
-e^2\iiint_{\text{BZ}}\frac{d^3k}{(2\pi)^3}
-v_{x}(\vec k)^2
-\tau_{\vec k}\delta\big(\epsilon-E(\vec k)\big),
-\label{eq_will_return}
-\end{align}
-In the strongly correlated case, $\sigma_{xx}(\epsilon)$ would be the current-current correlation function, given in first approximation by:
-\begin{align}
-\sigma_{xx}(\epsilon) 
-&=
-e^2\iiint_{\text{BZ}}\frac{d^3k}{(2\pi)^3}
-v_{x}(\vec k)^2
-\pi\hbar A(\vec k,\epsilon)^2,
-\end{align}
-where $A(\vec k,\epsilon)$ is the spectral weight.
-
-The above correspondence for the longitudinal conductivity has an analogous one for the transverse conductivity (not shown here, please refer to~\cite{verret_phenomenological_2017}). These correspondance between non-interacting and interacting transport functions suggests the following heuristic:
-\begin{align}
-\tau_{\vec k}\delta\big(\epsilon-E(\vec k)\big) &\longleftrightarrow \pi\hbar A(\vec k,\epsilon)^2
-\\
-\tau_{\vec k}^2\delta\big(\epsilon-E(\vec k)\big) &\longleftrightarrow \frac{\pi^2\hbar^2}{3} A(\vec k,\epsilon)^3
-\label{tauSquare}
-\end{align}
-to go from one to the other. This might be useful to guide more rigorous derivation of strongly correlated formulas. Note that expressions such as~\eqref{tauSquare} only consider linear order in magnetic field (section~\ref{sec_zeroField}) and neglect vertex corrections.
-
-\section{Complete Semi-classical formulas}
+\section{Semi-classical formulas}\label{section_semiclassical}
 \noindent
+\subsection{Exact formulation}
 To get full magnetic field dependence in $\sigma_{ij}(\epsilon)$, one must use the Chambers Formula~\cite{ashcroft_solid_1976}:
 \begin{align}
 \sigma_{ij}(\epsilon) 
@@ -448,13 +427,6 @@ The semiclassical movement equation \eqref{semiClassicalMovement} must be used t
 \end{tcolorbox}
 
 
-
-
-
-
-\section{Simplifications}
-
-
 \subsection{Equi-energy surfaces}\label{sec_surfaces}
 The Dirac delta $\delta(\epsilon-E(\vec k))$ allow to change the three-dimensional $\vec k$ integral to a two-dimensional integral on the surface defined by $E(\vec k)=\epsilon$ (see equation~8.57 and 8.62 of Ashcroft~\&~Mermin~\cite{ashcroft_solid_1976} for a similar statement).
 Indeed, for arbitrary $F(\vec k)$, we can rewrite the integral as:
@@ -515,23 +487,25 @@ e^{-t/\tau_{\vec k}}
 v_{j}(\vec k)
 \tau_{\vec k}.
 \end{align}
-However, in the case of $i\neq j$, $\sigma_{ij}(\omega)$ is zero at zero field, so we shall keep the linear term in $\vec B$ in this case (see~\cite{ziman_electrons_1960} for details). This allows to write \eqref{chambers1} as:
-\begin{empheq}[box=\fbox]{align}
-\lim_{\vec B\rightarrow0}\sigma_{ij}(\epsilon) 
+This allows to write \eqref{chambers1} as
+\begin{align}
+\Aboxed{
+\lim_{\vec B\rightarrow0}\sigma_{ii}(\epsilon) 
 &=
 e^2\iiint_{\text{BZ}}\frac{d^3k}{(2\pi)^3}
-\Bigg[
-\delta_{ij}
 v_{i}(\vec k)
 v_{i}(\vec k)
 \tau_{\vec k}
 \delta\big(\epsilon-E(\vec k)\big)
-\nonumber\\
-&
-% \phantom{=\iiint_{\text{BZ}}\frac{d^3k}{(2\pi)^3}}
-\qquad\qquad\qquad
-% -\varepsilon_{ijk}(-eB_{k})
-+e\varepsilon_{ijk}B_{k}
+},
+\end{align}
+for the longitudinal case. However, for the transverse case ($i\neq j$), then $\sigma_{ij}(\omega)$ is zero at zero field, so we shall keep the linear term in $\vec B$ (see~\cite{ziman_electrons_1960} for details).
+\begin{align}
+\Aboxed{
+\lim_{\vec B\rightarrow0}\sigma_{ij}(\epsilon) 
+&=
+e^3\varepsilon_{ijk}B_{k}
+\iiint_{\text{BZ}}\frac{d^3k}{(2\pi)^3}
 \Big[
 v_{i}(\vec k)
 v_{i}(\vec k)
@@ -543,12 +517,15 @@ v_{j}(\vec k)
 \Big]
 \tau_{\vec k}^2
 \delta\big(\epsilon-E(\vec k)\big)
-\Bigg],
-\label{chambersZeroField}
-\end{empheq}
-where $\delta_{ij}$ is the Kronecker symbol and $\varepsilon_{ijk}$ is the Levi-Cevita symbol (which is 0 if $i=j$). The first term of this equation thus corresponds to~\eqref{eq_will_return}.
+},
+\end{align}
+where $\varepsilon_{ijk}$ is the Levi-Cevita symbol (which is 0 if $i=j$).
 
-\subsection{Effective mass and Drude results}
+
+
+
+
+\subsection{Effective mass and Drude formula}
 
 We can carry out explicitely the integral over energy in the all-in-one equation~\eqref{chambers} and reorganize it as: 
 \begin{align}
@@ -829,6 +806,41 @@ and the scattering rate can have various contributions:
 + (\eta_{\text{an}} + \eta_{\text{an}1}\omega)\big(\cos k_x - \cos k_y\big)^{12}
 \end{align}
 In this expression, a small non-zero value for $\eta_0$ is usually needed to prevent divergence. Taken alone, $\eta_0$ would yield constant lifetime, $\eta_\ell$ would yield constant mean-free path, $\eta_N$ would yield scattering proportional to the density of state, $\eta_1$ provides a linear dependence in energy (allows to control the sign of $\alpha$ to some extent), $\eta_{\text{FL}_a}$ gives a Fermi-Liquid dependence, $\eta_{\text{FL}_b}$ a Fermi liquid dependence proportional to the density of states and $\eta_{\text{an}}$ yields a phenomenological increase of the anti-nodal scattering and $\eta_{\text{an}1}$ extends the linear energy dependence to this anisotropy. There can be various reasons to consider each terms separately, or combined or to add new terms.
+
+
+
+\section{Note on the strongly correlated case}
+
+In the strongly correlated case, transport should be computed as current-current correlation functions using Matsubara Green's functions. In that case, the analysis of section~\ref{section_tensors} remains mostly valid, with $\sigma_{ij}(\epsilon)$ becoming the current-current correlation function.
+
+The semiclassical formulas of section~\ref{section_semiclassical} might also remain relevant, although approximative. Indeed, the non-interacting, zero-field $\sigma_{xx}(\epsilon)$ is:
+\begin{align}
+\sigma_{xx}(\epsilon)
+&=
+e^2\iiint_{\text{BZ}}\frac{d^3k}{(2\pi)^3}
+v_{x}(\vec k)^2
+\tau_{\vec k}\delta\big(\epsilon-E(\vec k)\big),
+\label{eq_will_return}
+\end{align}
+whereas the strongly correlated current-current correlation function, at first order, correspond to:
+\begin{align}
+\sigma_{xx}(\epsilon) 
+&=
+e^2\iiint_{\text{BZ}}\frac{d^3k}{(2\pi)^3}
+v_{x}(\vec k)^2
+\pi\hbar A(\vec k,\epsilon)^2,
+\end{align}
+where $A(\vec k,\epsilon)$ is the spectral weight.
+
+The above correspondence for the longitudinal conductivity has an analogous one for the transverse conductivity~\cite{verret_phenomenological_2017}. These correspondance between non-interacting and interacting transport functions suggests the following heuristic:
+\begin{align}
+\tau_{\vec k}\delta\big(\epsilon-E(\vec k)\big) &\longleftrightarrow \pi\hbar A(\vec k,\epsilon)^2
+\\
+\tau_{\vec k}^2\delta\big(\epsilon-E(\vec k)\big) &\longleftrightarrow \frac{\pi^2\hbar^2}{3} A(\vec k,\epsilon)^3
+\label{tauSquare}
+\end{align}
+to go from one to the other. This might be useful to guide more rigorous derivation of strongly correlated formulas. Note that expressions such as~\eqref{tauSquare} only consider linear order in magnetic field (section~\ref{sec_zeroField}) and neglect vertex corrections.
+
 
 % \section{strongly correlated case}
 
