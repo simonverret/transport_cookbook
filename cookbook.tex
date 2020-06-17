@@ -126,6 +126,47 @@ We can displace the Fermi energy by considering $\epsilon = E_{\vec k}-\mu$, whe
 \label{figure_fermi}
 \end{figure}
 
+Furthermore, at low temperature, expressions~\eqref{sigma},~\eqref{alpha},~\eqref{beta} and~\eqref{Cv} can all be approximated using the Sommerfeld expansion (see~\cite{ashcroft_solid_1976}, appendix C):
+\begin{align}
+\int_{-\infty}^{\infty} d\epsilon
+\bigg(-\frac{\partial f(\epsilon)}{\partial \epsilon}\bigg)
+K(\epsilon)
+=
+K(0)
++
+\frac{\pi^2}{6}
+k_{B}^2T^2
+K''(0)
++
+\frac{7\pi^4}{270}
+k_{B}^2T^4
+K''''(0)
++ \cdots
+\end{align}
+where primes denote the derivative. One can thus verify the following first order approximations:
+\begin{align}
+\sigma_{ij}
+&\approx
+\sigma_{ij}(0)
+\label{sigma_expanded}
+\\
+\alpha_{ij}
+&\approx
+-\frac{\pi^2k_B^2 T}{3e}\sigma'_{ij}(0)
+\label{alpha_expanded}
+\\
+\beta_{ij}
+&\approx
+-\frac{\pi^2k_B^2 T}{3e^2}\sigma_{ij}(0)
+\label{beta_expanded}
+\\
+C_V
+&\approx
+-\frac{\pi^2k_B^2 T}{3}N(0)
+\label{Cv_expanded}
+\end{align}
+where the Lorentz ratio $\frac{\pi^2k_B^2}{3e^2}$ links $\beta_{ij}/T$ and $\sigma_{ij}$ at low temperature (Wiedemann-Franz law).
+
 The remaining sections of this document explain how to compute $\sigma_{ij}(\epsilon)$ in various limit of the semi-classical approximation. 
 First, however, let us define the usual measurable transport coefficients (resistivity, Hall coefficient, Seebeck coefficient, etc.) in 2D, and give an example of how one can use the above formulation to think about those coefficients in cuprates, by comparing the resistivity and the Seebeck coefficient.
 
@@ -215,33 +256,15 @@ Q_{xx}
 }.
 \label{eq_seebeck}
 \end{align}
-By substituing~\eqref{sigma} and~\eqref{alpha} and expanding $\sigma_{xx}(\omega)$ as a power series, one can further simplify the above to get the Mott formula
+for which first order Sommerfeld approximations~\eqref{sigma_expanded} and~\eqref{alpha_expanded} lead to the Mott formula:
 \begin{align}
 S_x = \frac{\alpha_{xx}}{\sigma_{xx}} 
-&=
--\frac{1}{eT}
-\frac{
-\int_{-\infty}^{\infty}d\epsilon
-\big(\frac{\partial f(\epsilon)}{\partial \epsilon}\big)\epsilon
-\big[ \sigma_{xx}(0) + \sigma'_{xx}(0)\epsilon + \cdots \big]
-}{
-\int_{-\infty}^{\infty} d\epsilon
-\big(\frac{\partial f(\epsilon)}{\partial \epsilon}\big)
-\big[ \sigma_{xx}(0) + \sigma'_{xx}(0)\epsilon + \cdots \big]
-}
-\\
-& = - \frac{\pi^2 k_B^2 T}{3e}\frac{ \sigma'_{xx}(0)}{ \sigma_{xx}(0)}
+&= - \frac{\pi^2 k_B^2 T}{3e}\frac{ \sigma'_{xx}(0)}{ \sigma_{xx}(0)}
 \\
 \Aboxed{
 S_x
 & = - \frac{\pi^2 k_B^2 T}{3e}\frac{\partial \log \sigma_{xx}(\epsilon) }{\partial \epsilon}\Big\vert_{\epsilon=0}
 },
-\end{align}
-where we used $\int_{-\infty}^{\infty}d\epsilon (\frac{\partial f(\epsilon)}{\partial \epsilon})\epsilon = 0$ because the integrand is odd and the important identity 
-\begin{align}
-\Aboxed{
-\int_{-\infty}^{\infty}d\epsilon \Big(\frac{\partial f(\epsilon)}{\partial \epsilon}\Big) = \frac{\pi^2 k_B^2 T^2}{3}
-}.
 \end{align}
 The Nernst coefficient is givent by:
 \begin{align}
